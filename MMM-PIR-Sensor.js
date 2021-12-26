@@ -65,6 +65,8 @@ Module.register('MMM-PIR-Sensor',{
 			this.updateDom();
 		} else if (notification === 'SHOW_ALERT') {
 			this.sendNotification(notification, payload)
+		} else if (notification === 'MONITOR_ACTIVE') {
+			this.sendNotification(notification, payload);
 		}
 	},
 

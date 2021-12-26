@@ -37,6 +37,8 @@ module.exports = NodeHelper.create({
     	            exec("echo 'on 0' | cec-client -s -d 1");
             });
         }
+        // Send notifiction that monitor has been turned on
+        this.sendSocketNotification('MONITOR_ACTIVE', true);
 	if (this.briefHDMIWakeupInterval) {
 	    clearInterval(this.briefHDMIWakeupInterval);
 	    clearTimeout(this.briefHDMIWakeupPhase2Timeout);
@@ -60,6 +62,8 @@ module.exports = NodeHelper.create({
 	        exec("echo 'standby 0' | cec-client -s -d 1");
             exec("/usr/bin/vcgencmd display_power 0", null);
         }
+        // Send notifiction that monitor has been turned off
+        this.sendSocketNotification('MONITOR_ACTIVE',false);
 	if (this.config.preventHDMITimeout > 0 && this.config.preventHDMITimeout < 10) {
             const self = this;
 	    self.briefHDMIWakeupInterval = setInterval(function() {
