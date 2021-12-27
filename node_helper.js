@@ -33,7 +33,7 @@ module.exports = NodeHelper.create({
 		if (data.indexOf("display_power=0") === 0) {
                     exec("/usr/bin/vcgencmd display_power 1", null);
                     // Send notifiction that monitor has been turned on
-                    this.sendSocketNotification('MONITOR_ACTIVE', true);
+                    self.sendSocketNotification('MONITOR_ACTIVE', true);
 	 	}
  	        if (self.config.supportCEC)
     	            exec("echo 'on 0' | cec-client -s -d 1");
